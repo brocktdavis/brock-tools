@@ -1,9 +1,10 @@
-import { type MouseEvent } from "react";
+import { useState, type MouseEvent } from "react";
 
 import { downloadAudioBlob, downloadAudioToBlob } from "@/utils/audioDownload";
 import { createAnkiNote } from "@/utils/createAnkiCard";
 
 import DownloadIcon from "@/assets/download.svg?react";
+import { Menu } from "@/components/Menu";
 
 const WORD_SPAN_SELECTOR = "span.u_word_dic";
 
@@ -77,6 +78,7 @@ export const Content = () => {
         <DownloadIcon />
         Export
       </button>
+      <Menu label="Open" menuContent={<span>Hello</span>} />
     </>
   );
 };
