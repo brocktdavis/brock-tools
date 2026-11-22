@@ -1,9 +1,9 @@
+import { type MouseEvent } from "react";
 
 import { downloadAudioBlob, downloadAudioToBlob } from "@/utils/audioDownload";
 import { createAnkiNote } from "@/utils/createAnkiCard";
-import { ActionButton } from "@/components/ActionButton";
 
-import './style.css';
+import DownloadIcon from "@/assets/download.svg?react";
 
 const WORD_SPAN_SELECTOR = "span.u_word_dic";
 
@@ -47,10 +47,36 @@ export const Content = () => {
     createAnkiNote({ fields });
   };
 
+  const onClickDownload = async (e: MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    downloadAudio();
+  };
+
+  const onClickExport = async (e: MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    exportToNote();
+  };
+
   return (
     <>
-      <ActionButton action={downloadAudio} label="Audio" />
-      <ActionButton action={exportToNote} label="Export" />
+      <button
+        type="button"
+        className="action-btn"
+        onClick={onClickDownload} 
+      >
+        <DownloadIcon />
+        Download
+      </button>
+      <button
+        type="button"
+        className="action-btn"
+        onClick={onClickExport} 
+      >
+        <DownloadIcon />
+        Export
+      </button>
     </>
   );
 };
